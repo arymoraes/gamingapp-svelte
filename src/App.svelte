@@ -1,13 +1,19 @@
 <script lang="ts">
 import Header from "./components/header/Header.svelte";
+import TextSection from "./components/partials/sections/TextSection.svelte";
 
-	export let name: string;
+export let name: string;
 </script>
 
 <main>
 	<Header />
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<TextSection
+		title="{name}"
+		subTitle="Meet new people with {name}"
+		text="With {name}, you can meet new people to play games or you can meet our idol, Danlimax."
+		image="/images/hero.jpg"
+		footer=""
+	/>
 </main>
 
 <style lang="scss">
