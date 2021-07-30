@@ -1,32 +1,17 @@
 <script lang="ts">
+import { Router, Route } from "svelte-routing";
 import Header from "./components/header/Header.svelte";
-import TextSection from "./components/partials/sections/TextSection.svelte";
+import Home from "./pages/Home.svelte";
 
 export let name: string;
 </script>
 
-<main>
-	<Header />
-	<TextSection
-		title="{name}"
-		subTitle="Meet new people with {name}"
-		text="With {name}, you can meet new people to play games or you can meet our idol, Danlimax."
-		image="/images/hero.jpg"
-		footer={{
-			buttons: [
-				{
-					text: 'Danlimax',
-					link: 'https://www.google.com'
-				}
-			],
-			text: [
-				{
-					text: 'danlimax safadinho'
-				}
-			],
-		}}
-	/>
-</main>
+<Router>
+	<div>
+		<Header />
+	  	<Route path="/"><Home name={name}/></Route>
+	</div>
+</Router>
 
 <style lang="scss">
 	:global(body, html) {

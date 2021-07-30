@@ -1,9 +1,11 @@
 <script lang="ts">
+   import Fa from 'svelte-fa';
+   import { faBars } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <main class="header__container">
    <div>Logo</div>
-   <div>Menu</div>
+   <Fa icon={faBars} />
 </main>
 
 <style lang="scss">
