@@ -1,9 +1,17 @@
 <script lang="ts">
+import type { ButtonI } from "../../../interfaces/Button";
+import type { TextI } from "../../../interfaces/Text";
+
+   interface FooterI {
+      buttons?: ButtonI[],
+      text?: TextI[],
+   }
+
    export let title: string;
    export let subTitle: string;
    export let text: string;
    export let image: string;
-   export let footer: string;
+   export let footer: FooterI;
 </script>
 
 <main class="text-section__container">
@@ -13,7 +21,18 @@
       <div class="text-section__title">{title}</div>
       <div class="text-section__subtitle">{subTitle}</div>
       <div class="text-section__text">{text}</div>
-      <div class="text-section__footer">{footer}</div>
+      <div class="text-section__footer">
+         {#each footer.buttons as button}
+            <button class="text-section__footer__button">
+               <a href={button.link}>
+                  {button.text}
+               </a>
+            </button>
+         {/each}
+         {#each footer.text as text}
+            <span class="text-section__footer__text">{text.text}</span>
+         {/each}
+      </div>
    </div>
 </main>
 
@@ -51,7 +70,22 @@
       }
 
       &__footer {
-         font-size: 3rem;
+         display: flex;
+         flex-direction: column;
+         &__button {
+            font-size: 2rem;
+            padding: 1rem;
+            width: 40%;
+            border-radius: .5rem;
+            background-color: rgb(23, 2, 63);
+            color: white;
+            border: 2px solid rgb(85, 85, 250);
+
+            a {
+               text-decoration: none;
+               color: inherit;
+            }
+         }
       }
    }
 </style>

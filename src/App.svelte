@@ -12,7 +12,19 @@ export let name: string;
 		subTitle="Meet new people with {name}"
 		text="With {name}, you can meet new people to play games or you can meet our idol, Danlimax."
 		image="/images/hero.jpg"
-		footer=""
+		footer={{
+			buttons: [
+				{
+					text: 'Danlimax',
+					link: 'https://www.google.com'
+				}
+			],
+			text: [
+				{
+					text: 'danlimax safadinho'
+				}
+			],
+		}}
 	/>
 </main>
 
