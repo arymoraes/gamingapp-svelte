@@ -4,8 +4,13 @@
 </script>
 
 <main class="header__container">
-   <div>Logo</div>
-   <Fa icon={faBars} />
+   <div class="hamburger">
+      <Fa icon={faBars} />
+   </div>
+   <div class="logo">
+      <img src="/images/boi.svg" alt="company logo, a good ox">
+   </div>
+   <a href="/login">Log In</a>
 </main>
 
 <style lang="scss">
@@ -15,11 +20,25 @@
          padding: 2rem;
          height: 7vh;
          display: flex;
-         justify-content: space-between;
          align-items: center;
          font-size: 1.6rem;
          color: rgb(224, 224, 33);
          font-weight: 600;
+         
+         .hamburger, .logo, a {
+            width: 33%;
+         }
+         a {
+            display: flex;
+            justify-content: flex-end;
+            color: rgb(236, 236, 138);
+         }
+         .logo {
+            display: flex;
+            justify-content: center;
+            max-height: 5vh;
+            width: auto;
+         }
       }
    }
 </style>
