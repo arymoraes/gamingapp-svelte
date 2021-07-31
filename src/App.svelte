@@ -2,6 +2,7 @@
 import { Router, Route } from "svelte-routing";
 import Header from "./components/header/Header.svelte";
 import Home from "./pages/Home.svelte";
+import Login from "./pages/Login.svelte";
 
 export let name: string;
 </script>
@@ -10,6 +11,7 @@ export let name: string;
 	<div>
 		<Header />
 	  	<Route path="/"><Home name={name}/></Route>
+			<Route path="/login"><Login/></Route>
 	</div>
 </Router>
 
