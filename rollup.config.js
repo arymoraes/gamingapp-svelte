@@ -7,6 +7,8 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 
+import replace from '@rollup/plugin-replace';
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -46,6 +48,9 @@ export default {
 				dev: !production
 			}
 		}),
+		replace({
+			SERVER_URL: JSON.stringify(process.env.SERVER_URL)
+	  	}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
