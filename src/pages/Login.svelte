@@ -1,17 +1,20 @@
 <script lang="ts">
 import { getContext } from 'svelte';
-import { apiLogin } from '../services/authService';
+import { apiLogin, storeToken } from '../services/authService';
 import BaseModalContent from '../components/modals/BaseModalContent.svelte';
  
 const { open } = getContext('simple-modal');
 
-let loginForm: HTMLFormElement;
+let email: string;
+let password: string;
 
 const handleSubmit = async () => {
-  const formData = new FormData(loginForm);
   try {
-    const response = await apiLogin(formData);
+    const response = await apiLogin({
+      email, password
+    });
     if (!response) openMessageModal();
+    storeToken(response.token);
   } catch (error) {
     console.error(error);
   }
@@ -27,13 +30,13 @@ const openMessageModal = () => {
       <img src="./images/boi.svg" alt="company logo">
     </div>
     <div class="login__title">Log In</div>
-    <form class="login__form" bind:this={loginForm} on:submit|preventDefault={handleSubmit}>
+    <form class="login__form" on:submit|preventDefault={handleSubmit}>
       <span class="login__forgot-password">Forgot Password?</span>
       <label for="email">
-        <input name="email" placeholder="Email" type="email" required>
+        <input name="email" placeholder="Email" type="email" bind:value={email} required>
       </label>
       <label for="password">
-        <input name="password" placeholder="Your password" type="password" required>
+        <input name="password" placeholder="Your password" type="password" bind:value={password} required>
       </label>
       <label for="keep" class="login__keep">
         <input name="keep" type="checkbox">

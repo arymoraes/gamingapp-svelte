@@ -4,6 +4,7 @@ import Header from "./components/header/Header.svelte";
 import Home from "./pages/Home.svelte";
 import Login from "./pages/Login.svelte";
 import Modal from 'svelte-simple-modal';
+import Signup from "./pages/Signup.svelte";
 
 export let name: string;
 </script>
@@ -20,7 +21,8 @@ export let name: string;
 		<div>
 			<Header />
 			<Route path="/"><Home name={name}/></Route>
-				<Route path="/login"><Login/></Route>
+			<Route path="/login"><Login/></Route>
+			<Route path="/signup"><Signup/></Route>
 		</div>
 	</Modal>
 </Router>
