@@ -31,6 +31,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "axios": "^0.21.1",
     "sirv-cli": "^1.0.0",
-    "svelte-routing": "^1.6.0"
+    "svelte-routing": "^1.6.0",
+    "svelte-simple-modal": "^1.0.0"
   }
 }

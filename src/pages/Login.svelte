@@ -1,6 +1,9 @@
 <script lang="ts">
-import axios from 'axios';
+import { getContext } from 'svelte';
 import { apiLogin } from '../services/authService';
+import BaseModalContent from '../components/modals/BaseModalContent.svelte';
+ 
+const { open } = getContext('simple-modal');
 
 let loginForm: HTMLFormElement;
 
@@ -8,14 +11,17 @@ const handleSubmit = async () => {
   const formData = new FormData(loginForm);
   try {
     const response = await apiLogin(formData);
-    console.log(response);
+    if (!response) openMessageModal();
   } catch (error) {
     console.error(error);
   }
 }
+
+const openMessageModal = () => {
+  open(BaseModalContent, { message: "Invalid Credentials" });
+}
   
 </script>
-
   <main class="login">
     <div class="login__logo">
       <img src="./images/boi.svg" alt="company logo">
