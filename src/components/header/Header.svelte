@@ -65,12 +65,21 @@
             display: flex;
             justify-content: flex-end;
             color: rgb(236, 236, 138);
+
+            @media (min-width: 900px) {
+               width: 25%;
+            }
          }
          .logo {
             display: flex;
             justify-content: center;
             max-height: 5vh;
             width: auto;
+
+            @media (min-width: 900px) {
+               width: 25%;
+               justify-content: flex-start;
+            }
          }
       }
       &__login {

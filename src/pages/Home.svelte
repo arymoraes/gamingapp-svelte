@@ -25,6 +25,9 @@
          subTitle="In {name}, you can search for players looking for your own play style"
          text="In {name}, you can search for players looking for your own play style. Are you a casual player? Find casual players to play with. Are you a competitive player? Find competitive players near your ranking to play together."
          image="/images/hero-2.png"
+         bgColor="#F8fbf8"
+         color="black"
+         reversed={true}
          footer={{
             buttons: [
                {
