@@ -55,18 +55,26 @@ const openMessageModal = () => {
       background-color: rgb(31, 30, 30);
       color: black;
 
+      @media (min-width: 900px) {
+        padding: 0 35vw;
+      }
+
       &__logo {
         padding-top: 2rem;
         height: 20vh;
         width: auto;
+
+        @media (min-width: 900px) {
+          display: flex;
+          padding: 3rem;
+          justify-content: center;
+        }
       }
 
       &__title {
         font-size: 3rem;
         font-weight: 600;
         padding-bottom: 2rem;
-        border-top-right-radius: 1rem;
-        border-top-left-radius: 1rem;
       }
 
       &__title, &__form {
@@ -92,8 +100,10 @@ const openMessageModal = () => {
         width: 100%;
         flex-direction: column;
         min-height: 50vh;
-        border-bottom-left-radius: 1rem;
-        border-bottom-right-radius: 1rem;
+
+        @media (min-width: 900px) {
+          min-height: 35vh;
+        }
 
         input[type="email"], input[type="password"] {
           margin: 0;
