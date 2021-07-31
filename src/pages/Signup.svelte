@@ -57,12 +57,12 @@
          Confirm your password
          <input name="passwordconf" placeholder="Confirm your password" min="8" max="16" type="password" bind:value={passwordConf} required>
       </label>
-      <label for="terms">
+      <label for="terms" class="signup__terms">
          <input type="checkbox" name="terms" required>
          I Agree to the terms and conditions
       </label>
       <button type="submit" class="signup__button">Sign up</button>
-      <a class="signup__signup" href="/signup">Already have an account? Log in here</a>
+      <a class="signup__signup" href="/login">Already have an account? Log in here</a>
    </form>
 </main>
      
@@ -74,18 +74,26 @@
    background-color: rgb(31, 30, 30);
    color: black;
 
+   @media (min-width: 900px) {
+      padding: 0 35vw;
+   }
+
    &__logo {
       padding-top: 2rem;
       height: 20vh;
       width: auto;
+
+      @media (min-width: 900px) {
+         display: flex;
+         padding: 3rem;
+         justify-content: center;
+      }
    }
 
    &__title {
       font-size: 3rem;
       font-weight: 600;
       padding-bottom: 2rem;
-      border-top-right-radius: 1rem;
-      border-top-left-radius: 1rem;
    }
 
    &__title, &__form {
@@ -93,13 +101,16 @@
       padding: 2rem;
    }
 
+   &__terms {
+      display: flex;
+      align-items: center;
+   }
+
    &__form {
       display: flex;
       width: 100%;
       flex-direction: column;
       min-height: 50vh;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
 
       label {
          font-size: 1.5rem;
@@ -110,6 +121,10 @@
             font-weight: 400;
          }
       }
+
+      @media (min-width: 900px) {
+          min-height: 35vh;
+        }
 
       input[type="text"], input[type="password"], input[type="email"] {
          margin: .2rem 0 0 0;
