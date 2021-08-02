@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Router } from "svelte-routing";
-import Header from "./components/header/Header.svelte";
 import Modal from 'svelte-simple-modal';
+import PrivateRoutes from "./routes/PrivateRoutes.svelte";
 import PublicRoutes from "./routes/PublicRoutes.svelte";
 
 </script>
@@ -16,8 +16,8 @@ import PublicRoutes from "./routes/PublicRoutes.svelte";
 		'font-size': '3rem'
 	}}>
 		<div>
-			<Header />
-			<PublicRoutes />
+			<!-- <PublicRoutes /> -->
+			<PrivateRoutes />
 		</div>
 	</Modal>
 </Router>
