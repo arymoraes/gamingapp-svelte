@@ -20,7 +20,7 @@
       position: relative;
       background-size: 100%;
       margin-right: 2rem;
-      transition: transform .2s;
+      transition: transform .2s ease;
 
       &:hover {
          transform: scale(1.05);

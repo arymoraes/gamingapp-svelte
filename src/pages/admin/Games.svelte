@@ -14,7 +14,8 @@ onMount(async () => {
 
 <main>
    <section class="games__all">
-      All Games
+      <button class="btn btn-light games__add-button" type="button">Add Game</button>
+      <span class="games__title">All Games</span>
       <ul class="games__list">
          {#each games as game}
          <GameCard name={game.name} image="https://cdn1.dotesports.com/wp-content/uploads/2019/09/12195522/league-of-legends.jpg" url="https://na.leagueoflegends.com/en-us/"/>
@@ -26,10 +27,31 @@ onMount(async () => {
 
 <style lang="scss">
    .games {
+      &__all {
+         display: flex;
+         flex-direction: column;
+         padding: 2rem;
+      }
       &__list {
          display: flex;
          overflow-x: scroll;
-         padding: 1.5rem;
+         padding: 1.5rem 0;
+      }
+
+      &__add-button {
+         font-size: 1.5rem;
+         padding: 1rem;
+         width: 10rem;
+      }
+
+      &__title {
+         font-size: 3rem;
+         font-weight: 700;
+         border-bottom: 1px solid white;
+         
+         @media (min-width: 900px) {
+            width: 100%;
+         }
       }
    }
 </style>
