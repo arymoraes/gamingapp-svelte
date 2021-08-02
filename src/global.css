@@ -1,0 +1,19 @@
+* {
+   scrollbar-width: thin;
+   scrollbar-color: rgb(4, 4, 51) rgb(239, 250, 79);
+ }
+ 
+ /* Targtes on Chrome, Edge, and Safari */
+ *::-webkit-scrollbar {
+   width: 12px;
+ }
+ 
+ *::-webkit-scrollbar-track {
+   background: rgb(239, 250, 79);
+ }
+ 
+ *::-webkit-scrollbar-thumb {
+   background-color: rgb(4, 4, 51);
+   border-radius: 20px;
+   border: 3px solid rgb(239, 250, 79);
+ }

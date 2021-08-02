@@ -3,6 +3,7 @@ import { Router } from "svelte-routing";
 import Modal from 'svelte-simple-modal';
 import PrivateRoutes from "./routes/PrivateRoutes.svelte";
 import PublicRoutes from "./routes/PublicRoutes.svelte";
+import './global.css';
 
 </script>
 
@@ -36,4 +37,9 @@ import PublicRoutes from "./routes/PublicRoutes.svelte";
 	:global(*) {
   		box-sizing: border-box;
 	}
+
+	* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
 </style>
