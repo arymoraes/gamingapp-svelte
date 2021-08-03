@@ -9,3 +9,12 @@ export const adminGetGames = async () => {
       return false;
    }
 }
+
+export const adminAddGame = async (game) => {
+   try {
+      const response: AxiosResponse = await api().post('/admin/games/add', game);
+      return response.data;
+   } catch {
+      return false;
+   }
+}
