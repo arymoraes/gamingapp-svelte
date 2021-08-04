@@ -1,4 +1,8 @@
 <script lang="ts">
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+import Fa from "svelte-fa";
+
 import { adminAddGame } from "../../services/admin/gameService";
 
 
@@ -38,6 +42,7 @@ import { adminAddGame } from "../../services/admin/gameService";
 
 <main>
     <section class="container">
+        <a href="/admin/categories"><Fa icon={faArrowLeft}/></a>
         <form class="game__form" on:submit|preventDefault={handleSubmit}>
             <span class="addgame-title">Add Game</span>
             <div class="mb-3">
@@ -114,5 +119,8 @@ button {
     &__submit {
         margin-top: 3rem;
     }
+}
+a {
+    color: white;
 }
 </style>
