@@ -1,9 +1,11 @@
 <script lang="ts">
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { onMount } from "svelte";
 
 import Fa from "svelte-fa";
+import type { CategoryI } from "../../interfaces/Category";
 
-import { adminAddGame } from "../../services/admin/gameService";
+import { adminAddGame, adminGetCategories } from "../../services/admin/gameService";
 
 
     let ranks: string[] = [];
@@ -11,6 +13,16 @@ import { adminAddGame } from "../../services/admin/gameService";
     let url: string = '';
     let image: string = '';
     let newRank: string = '';
+    let category: string;
+
+    let categories: CategoryI[] = [];
+
+    onMount(async () => {
+        const response = await adminGetCategories();
+        if (response) {
+            categories = response;
+        }
+    });
 
     const addRank = () => {
         if (!newRank) {
@@ -28,7 +40,7 @@ import { adminAddGame } from "../../services/admin/gameService";
     const handleSubmit = async () => {
         try {
             const response = await adminAddGame({
-                name, url, image, ranks,
+                name, url, image, ranks, category
             });
             if (response) {
                 name = url = image = newRank = '';
@@ -42,7 +54,7 @@ import { adminAddGame } from "../../services/admin/gameService";
 
 <main>
     <section class="container">
-        <a href="/admin/categories"><Fa icon={faArrowLeft}/></a>
+        <a href="/admin/games"><Fa icon={faArrowLeft}/></a>
         <form class="game__form" on:submit|preventDefault={handleSubmit}>
             <span class="addgame-title">Add Game</span>
             <div class="mb-3">
@@ -57,6 +69,12 @@ import { adminAddGame } from "../../services/admin/gameService";
                 <label for="image" class="form-label">Game image</label>
                 <input type="text" class="form-control" id="image" name="image" bind:value={image} required>
             </div>
+            <label for="category">Category</label>
+            <select name="category" id="category" bind:value={category}>
+            {#each categories as category}
+                <option name={category.name} value={category.name}>{category.name}</option>
+            {/each}
+            </select>
             <label for="new-rank">Add Rank:</label>
             <input type="text" name="new-rank" bind:value={newRank}>
             <button type="button" class="btn btn-primary" on:click={addRank}>Add Rank</button>
