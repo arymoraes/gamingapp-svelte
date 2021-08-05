@@ -4,17 +4,25 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { onMount } from "svelte";
 import Fa from "svelte-fa";
 import GameCard from "../../components/partials/games/GameCard.svelte";
+import type { CategoryI } from "../../interfaces/Category";
 import type { GameI } from "../../interfaces/Game";
-import { adminGetGames } from "../../services/admin/gameService";
+import { adminGetCategories, adminGetGames } from "../../services/admin/gameService";
 
 let games: GameI[] = [];
+let categories: CategoryI[] = [];
 
 onMount(async () => {
    const response = await adminGetGames();
    if (response) {
       games = response;
    }
+   const response2 = await adminGetCategories();
+    if (response2) {
+        categories = response2;
+    }
+    console.log(games);
 });
+
 </script>
 
 <main>
@@ -27,6 +35,14 @@ onMount(async () => {
             <GameCard name={game.name} image={game.image} url={game.url}/>
          {/each}
       </ul> 
+      {#each categories as category}
+      <span class="games__list__title">{category.name}</span>
+      <ul class="games__list">
+         {#each games.filter((game) => category && game.category && game.category.id === category.id) as game}
+            <GameCard name={game.name} image={game.image} url={game.url}/>
+         {/each}
+      </ul>
+      {/each}
    </section>
 </main>
 
@@ -41,6 +57,10 @@ onMount(async () => {
       display: flex;
       overflow-x: scroll;
       padding: 1.5rem 0 1.5rem 1rem;
+
+      &__title {
+         font-size: 2rem;
+      }
    }
 
    &__add-button {

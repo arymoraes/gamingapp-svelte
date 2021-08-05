@@ -6,6 +6,9 @@ export interface GameRawI {
 
 export interface GameI extends GameRawI {
    id: number,
-   categories: [],
+   category: {
+      name: string,
+      id: number
+   },
    rank: [],
 }
