@@ -1,6 +1,7 @@
 <div class="dashboard__wrapper">
     <a href="/admin/categories">Categories</a>
     <a href="/admin/games">Games</a>
+    <a href="/admin/styles">Game Styles</a>
 </div>
 
 <style lang="scss">
