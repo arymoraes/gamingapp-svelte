@@ -15,6 +15,12 @@ const openModal = (name: string) => {
     document.dispatchEvent(newEvent);
 }
 
+const handleEdit = (id: number) => {
+    // finish the editing later, too lazy rn
+    console.log(styles.filter((style: StyleI) => style.id === id)[0]);
+    return;
+}
+
 onMount(async () => {
     const response = await adminGetStyles();
     if (response) {
@@ -33,7 +39,14 @@ onMount(async () => {
         <span class="categories__title">All styles</span>
         <ul class="categories__list list-group">
             {#each styles as style}
-                <Modal name={style.name}>{style.name}</Modal>
+                <Modal name={style.name}>
+                    <form class="container" on:submit|preventDefault={() => handleEdit(style.id)}>
+                        <label for="style">
+                        </label>
+                        <input type="text" id="style" class="form-control" value={style.name}>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </Modal>
                 <li class="list-group-item" on:click={() => openModal(style.name)}>{style.name}<button type="button" class="btn-close categories__close-btn" disabled aria-label="Close"></button></li>
             {/each}
         </ul> 
@@ -73,5 +86,11 @@ onMount(async () => {
 }
 a {
     color: white;
+}
+.list-group-item {
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(233, 233, 233);
+    }
 }
 </style>

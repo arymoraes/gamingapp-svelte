@@ -81,8 +81,4 @@ button {
         margin-top: 3rem;
     }
 }
-
-a{
-    color: white;
-}
 </style>

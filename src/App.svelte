@@ -37,7 +37,9 @@ import './global.css';
 	:global(*) {
   		box-sizing: border-box;
 	}
-
+	:global(.form-control, .btn) {
+		font-size: 2rem;
+	}
 	* {
   scrollbar-width: thin;
   scrollbar-color: blue orange;
