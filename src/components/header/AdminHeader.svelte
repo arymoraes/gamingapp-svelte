@@ -21,6 +21,7 @@
            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
              <li><a class="dropdown-item" href="/admin/games">Games</a></li>
              <li><a class="dropdown-item" href="/admin/categories">Categories</a></li>
+             <li><a class="dropdown-item" href="/admin/styles">Styles</a></li>
              <li>
                <hr class="dropdown-divider">
              </li>

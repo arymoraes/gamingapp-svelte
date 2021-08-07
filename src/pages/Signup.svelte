@@ -3,8 +3,6 @@
    import { apiSignup, storeToken } from '../services/authService';
    import BaseModalContent from '../components/modals/BaseModalContent.svelte';
     
-   const { open } = getContext('simple-modal');
-   
    let email: string;
    let username: string;
    let password: string;
@@ -12,7 +10,6 @@
    
    const handleSubmit = async (): Promise<void> => {
      if (password !== passwordConf) {
-      openMessageModal('Your passwords must match');
       return;
      }
      try {
@@ -22,15 +19,10 @@
           password,
           passwordConf
        });
-       if (!response) openMessageModal('Something went wrong. Please, try again.');
        storeToken(response.token);
      } catch (error) {
        console.error(error);
      }
-   }
-   
-   const openMessageModal = (message) => {
-     open(BaseModalContent, { message });
    }
      
 </script>

@@ -20,7 +20,6 @@ onMount(async () => {
     if (response2) {
         categories = response2;
     }
-    console.log(games);
 });
 
 </script>

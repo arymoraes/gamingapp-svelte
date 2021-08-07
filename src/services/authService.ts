@@ -7,13 +7,13 @@ interface LoginFormI {
 }
 
 export const apiLogin = async (formData: LoginFormI) => {
-   try {
-      const response: AxiosResponse = await api().post('/user/login', formData);
-      return response.data;
-   } catch {
-      return false;
-   }
-}
+  try {
+    const response: AxiosResponse = await api().post('/user/login', formData);
+    return response.data;
+  } catch {
+    return false;
+  }
+};
 
 interface SignupFormI {
    username: string,
@@ -23,14 +23,23 @@ interface SignupFormI {
 }
 
 export const apiSignup = async (formData: SignupFormI) => {
-   try {
-      const response: AxiosResponse = await api().post('/user/register', formData);
-      return response.data;
-   } catch {
-      return false;
-   }
-}
+  try {
+    const response: AxiosResponse = await api().post('/user/register', formData);
+    return response.data;
+  } catch {
+    return false;
+  }
+};
+
+export const apiProfile = async () => {
+  try {
+    const response: AxiosResponse = await api().get('/user/me');
+    return response.data;
+  } catch {
+    return false;
+  }
+};
 
 export const storeToken = (token: string) => {
-   localStorage.setItem('token', `Bearer ${token}`)
-}
+  localStorage.setItem('token', `Bearer ${token}`);
+};

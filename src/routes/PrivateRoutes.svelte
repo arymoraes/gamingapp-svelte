@@ -1,13 +1,16 @@
 <script lang="ts">
+import { getContext } from "svelte";
+
 import { Router, Route } from "svelte-routing";
 import AdminHeader from "../components/header/AdminHeader.svelte";
 import AddCategory from "../pages/admin/AddCategory.svelte";
 import AddGame from "../pages/admin/AddGame.svelte";
-import AddStyle from "../pages/admin/AddStyle.svelte";
 import Categories from "../pages/admin/Categories.svelte";
 import Dashboard from "../pages/admin/Dashboard.svelte";
 import Games from "../pages/admin/Games.svelte";
 import Styles from "../pages/admin/Styles.svelte";
+
+let user = getContext('user');
 </script>
    
    <Router>

@@ -3,8 +3,6 @@ import { getContext } from 'svelte';
 import { apiLogin, storeToken } from '../services/authService';
 import BaseModalContent from '../components/modals/BaseModalContent.svelte';
  
-const { open } = getContext('simple-modal');
-
 let email: string;
 let password: string;
 
@@ -13,17 +11,12 @@ const handleSubmit = async () => {
     const response = await apiLogin({
       email, password
     });
-    if (!response) openMessageModal();
     storeToken(response.token);
   } catch (error) {
     console.error(error);
   }
 }
 
-const openMessageModal = () => {
-  open(BaseModalContent, { message: "Invalid Credentials" });
-}
-  
 </script>
   <main class="login">
     <div class="login__logo">

@@ -1,26 +1,35 @@
 <script lang="ts">
 import { Router } from "svelte-routing";
-import Modal from 'svelte-simple-modal';
 import PrivateRoutes from "./routes/PrivateRoutes.svelte";
 import PublicRoutes from "./routes/PublicRoutes.svelte";
 import './global.css';
+import { getContext, onMount, setContext } from "svelte";
+import { apiProfile } from "./services/authService";
+import { get, writable } from "svelte/store";
+
+let userData: any = writable(null);
+let user = null;
+
+setContext('user', userData);
+userData.subscribe(value => {
+	user = value;
+});
+
+onMount(async () => {
+	const response = await apiProfile();
+	userData.set(response.user);
+});
 
 </script>
 
 <Router>
-	<Modal styleWindow={{
-		height: '30vh',
-		display: 'flex',
-		'justify-content': 'center',
-		'align-items': 'center'
-	}} styleContent={{
-		'font-size': '3rem'
-	}}>
 		<div>
-			<!-- <PublicRoutes /> -->
-			<PrivateRoutes />
+			{#if user}
+				<PrivateRoutes />
+			{:else}
+				<PublicRoutes />
+			{/if}
 		</div>
-	</Modal>
 </Router>
 
 <style lang="scss">
