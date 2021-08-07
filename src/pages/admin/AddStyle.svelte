@@ -1,9 +1,14 @@
 <script lang="ts">
-import Fa from 'svelte-fa';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import type { StyleI } from "../../interfaces/Style";
+
 import { adminAddStyle } from "../../services/admin/gameService";
 
 let name: string = '';
+export let styles: StyleI[] = [];
+let alert = {
+    type: '',
+    text: '',
+};
 
 const handleSubmit = async () => {
     try {
@@ -11,17 +16,28 @@ const handleSubmit = async () => {
             name,
         });
         if (response) {
+            styles = [...styles, response];
             name = '';
+            alert = {
+                type: 'success',
+                text: 'Style added successfully!'
+            };
         }
     } catch (error) {
         console.error(error);
+        alert = {
+            type: 'danger',
+            text: 'Something went wrong, please try again'
+        };
     }
 }
 </script>
 
 <main>
     <section class="container">
-        <a href="/admin/styles"><Fa icon={faArrowLeft} /></a>
+        {#if alert.text}
+            <span class={`alert alert-${alert.type}`}>{alert.text}</span>
+        {/if}
         <form class="game__form" on:submit|preventDefault={handleSubmit}>
             <span class="addgame-title">Add Style</span>
             <div class="mb-3">
@@ -35,7 +51,7 @@ const handleSubmit = async () => {
     
 <style lang="scss">
 .container {
-    padding: 10rem;
+    padding: 3rem;
     font-size: 2rem;
 }
 
@@ -48,7 +64,7 @@ input {
     padding: 2rem 0;
     font-weight: 600;
     font-size: 3rem;
-    color: yellow;
+    color: black;
 }
 
 button {

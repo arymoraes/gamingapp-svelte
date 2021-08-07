@@ -18,7 +18,6 @@ import Styles from "../pages/admin/Styles.svelte";
       <Route path="/admin/categories"><Categories/></Route>
       <Route path="/admin/addgames"><AddGame/></Route>
       <Route path="/admin/addcategories"><AddCategory/></Route>
-      <Route path="/admin/addstyles"><AddStyle/></Route>
    </Router>
    
    <style lang="scss">

@@ -6,8 +6,9 @@ import Fa from "svelte-fa";
 import Modal from "../../components/modals/Modal.svelte";
 import type { StyleI } from "../../interfaces/Style";
 import { adminGetStyles } from "../../services/admin/gameService";
+import AddStyle from "./AddStyle.svelte";
 
-let styles: StyleI[] = [];
+export let styles: StyleI[] = [];
 
 const openModal = (name: string) => {
     const newEvent = new Event(`open-modal-${name}`)
@@ -25,7 +26,10 @@ onMount(async () => {
 <main>
     <section class="categories__all">
         <a href="/admin"><Fa icon={faArrowLeft} /></a>
-        <a href="/admin/addstyles"><button class="btn btn-primary categories__add-button" type="button">Add Style</button></a>
+       <button class="btn btn-primary categories__add-button" type="button" on:click={() => openModal('add-style')}>Add Style</button>
+        <Modal name="add-style">
+            <AddStyle bind:styles={styles}/>
+        </Modal>
         <span class="categories__title">All styles</span>
         <ul class="categories__list list-group">
             {#each styles as style}
